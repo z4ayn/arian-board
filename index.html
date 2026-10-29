@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#155eef">
+  <meta name="description" content="ARIANBOARD — শিক্ষা ও পরীক্ষার ফলাফল অনুসন্ধানের পোর্টাল।">
+  <title>ARIANBOARD — Result Portal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="ARIANBOARD Home">
+      <span class="brand-mark">A</span>
+      <span><strong>ARIANBOARD</strong><small>RESULT PORTAL</small></span>
+    </a>
+    <div class="header-actions">
+      <button id="langToggle" class="lang-btn" type="button">English</button>
+      <a class="header-link" href="#search" data-i18n="checkResult">রেজাল্ট দেখুন</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow"><span class="pulse"></span><span data-i18n="heroEyebrow">আপনার ফলাফল, এক জায়গায়</span></div>
+        <h1 data-i18n="heroTitle">আপনার রেজাল্ট<br><span>সহজেই খুঁজুন</span></h1>
+        <p data-i18n="heroDesc">পরীক্ষা, বোর্ড, বছর ও রোল নম্বর দিয়ে ফলাফল খুঁজুন। ফলাফল সোর্সে পাওয়া গেলে তবেই আসল ফলাফল দেখানো হবে।</p>
+        <div class="hero-pills"><span>SSC</span><span>HSC</span><span>Dakhil</span><span>Alim</span><span>Technical</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orb orb-one"></div><div class="orb orb-two"></div>
+        <div class="result-preview">
+          <div class="preview-head"><span class="preview-icon">✓</span><span>ARIANBOARD</span><span class="verified-label">PORTAL</span></div>
+          <div class="preview-lines"><i></i><i></i><i></i></div>
+          <div class="preview-score"><div><small>RESULT STATUS</small><strong>Ready to Search</strong></div><span class="score-icon">↗</span></div>
+          <div class="preview-foot">CHECK BY ARIANBOARD</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="search-section" id="search">
+      <div class="section-heading">
+        <div><span class="section-kicker" data-i18n="searchKicker">RESULT FINDER</span><h2 data-i18n="searchTitle">রেজাল্ট সার্চ করুন</h2></div>
+        <span class="secure-note"><span class="lock">⌑</span><span data-i18n="secureNote">আপনার তথ্য শুধু সার্চের জন্য</span></span>
+      </div>
+      <form id="resultForm" class="search-card">
+        <div class="field-grid">
+          <label class="field"><span data-i18n="examLabel">পরীক্ষা</span>
+            <select id="exam" required>
+              <option value="SSC">SSC / এসএসসি</option>
+              <option value="HSC">HSC / এইচএসসি</option>
+              <option value="Dakhil">Dakhil / দাখিল</option>
+              <option value="Alim">Alim / আলিম</option>
+              <option value="Vocational">SSC Vocational / এসএসসি ভোকেশনাল</option>
+              <option value="Diploma">Diploma / ডিপ্লোমা</option>
+              <option value="Other">Other / অন্যান্য</option>
+            </select>
+          </label>
+          <label class="field"><span data-i18n="yearLabel">পরীক্ষার বছর</span>
+            <select id="year" required></select>
+          </label>
+          <label class="field"><span data-i18n="boardLabel">বোর্ড</span>
+            <select id="board" required>
+              <option value="Dhaka">Dhaka / ঢাকা</option>
+              <option value="Cumilla">Cumilla / কুমিল্লা</option>
+              <option value="Chittagong">Chittagong / চট্টগ্রাম</option>
+              <option value="Rajshahi">Rajshahi / রাজশাহী</option>
+              <option value="Jashore">Jashore / যশোর</option>
+              <option value="Barishal">Barishal / বরিশাল</option>
+              <option value="Sylhet">Sylhet / সিলেট</option>
+              <option value="Dinajpur">Dinajpur / দিনাজপুর</option>
+              <option value="Mymensingh">Mymensingh / ময়মনসিংহ</option>
+              <option value="Madrasah">Madrasah / মাদ্রাসা</option>
+              <option value="Technical">Technical / কারিগরি</option>
+              <option value="Other">Other / অন্যান্য</option>
+            </select>
+          </label>
+          <label class="field"><span data-i18n="rollLabel">রোল নম্বর</span><input id="roll" inputmode="numeric" autocomplete="off" placeholder="যেমন: 123456" required maxlength="20"></label>
+          <label class="field"><span data-i18n="regLabel">রেজিস্ট্রেশন নম্বর (ঐচ্ছিক)</span><input id="registration" inputmode="numeric" autocomplete="off" placeholder="Registration number" maxlength="24"></label>
+          <label class="field"><span data-i18n="resultTypeLabel">ফলাফলের ধরন</span>
+            <select id="resultType"><option value="individual">Individual Result / ব্যক্তিগত</option><option value="institution">Institution Result / প্রতিষ্ঠান</option></select>
+          </label>
+        </div>
+        <label class="consent"><input id="consent" type="checkbox" required><span data-i18n="consentText">আমি বুঝেছি, আসল ফলাফল দেখাতে কার্যকর ডেটা সোর্স প্রয়োজন; ডেমো ফলাফল সরকারি ফলাফল নয়।</span></label>
+        <button class="primary-btn" type="submit"><span data-i18n="searchBtn">রেজাল্ট খুঁজুন</span><span class="arrow">→</span></button>
+        <p class="form-note" data-i18n="formNote">ARIANBOARD কোনো সরকারি সংস্থা নয়। সরকারি ফলাফলের সত্যতা মূল উৎসে যাচাই করুন।</p>
+      </form>
+    </section>
+
+    <section id="resultArea" class="result-area" aria-live="polite"></section>
+
+    <section class="info-grid">
+      <article class="info-card"><div class="info-icon blue">⌕</div><h3 data-i18n="feature1Title">সহজ সার্চ</h3><p data-i18n="feature1Desc">পরীক্ষা, বছর, বোর্ড ও রোল দিয়ে দ্রুত খোঁজার জন্য সহজ ফর্ম।</p></article>
+      <article class="info-card"><div class="info-icon violet">▤</div><h3 data-i18n="feature2Title">পুরোনো বছরের ফলাফল</h3><p data-i18n="feature2Desc">পূর্ববর্তী বছরের ফলাফল পাওয়া যাবে যদি নির্ভরযোগ্য সোর্স বা সংরক্ষিত রেকর্ড থাকে।</p></article>
+      <article class="info-card"><div class="info-icon green">↗</div><h3 data-i18n="feature3Title">প্রিন্ট ও PDF</h3><p data-i18n="feature3Desc">প্রদর্শিত রেজাল্ট প্রিন্ট করুন বা ব্রাউজার থেকে PDF হিসেবে সেভ করুন।</p></article>
+    </section>
+
+    <section class="source-box">
+      <div class="source-icon">i</div>
+      <div><h3 data-i18n="sourceTitle">ফলাফল কোথা থেকে আসবে?</h3><p data-i18n="sourceDesc">এই GitHub Pages সংস্করণে লাইভ সরকারি ডেটা API যুক্ত নেই। আসল ফলাফল দেখাতে অনুমোদিত API/ডেটা সোর্স বা নির্ভরযোগ্য ডেটাসেট যুক্ত করতে হবে। CAPTCHA বা অন্য অ্যাক্সেস-নিয়ন্ত্রণ এড়িয়ে ফলাফল সংগ্রহ করা হয় না।</p>
+        <div class="source-links">
+          <a href="https://eboardresults.com/v2/home" target="_blank" rel="noopener noreferrer">eBoard Results ↗</a>
+          <a href="https://educationboardresults.gov.bd/" target="_blank" rel="noopener noreferrer">Education Board Results ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="footer-brand" href="./">ARIANBOARD</a>
+    <p data-i18n="footerDisclaimer">স্বতন্ত্র তথ্য-সহায়ক পোর্টাল; সরকারি ওয়েবসাইট নয়।</p>
+    <div class="footer-stamp">CHECK BY ARIANBOARD</div>
+    <small>© <span id="currentYear"></span> ARIANBOARD. <span data-i18n="rights">All rights reserved.</span></small>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
