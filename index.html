@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#155eef">
+  <meta name="description" content="ARIANBOARD — বাংলাদেশের শিক্ষার্থীদের জন্য ফলাফল, বিশ্ববিদ্যালয় গাইড, ভর্তি প্রস্তুতি, স্টাডি টুলস ও অনুপ্রেরণা।">
+  <meta property="og:title" content="ARIANBOARD — Your Result, Your Future">
+  <meta property="og:description" content="Results, university guidance, study tools and motivation by ARIAN.">
+  <meta property="og:type" content="website">
+  <title>ARIANBOARD — Result Portal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="ARIANBOARD Home">
+      <span class="brand-mark">A</span>
+      <span><strong>ARIANBOARD</strong><small>RESULT PORTAL</small></span>
+    </a>
+    <div class="header-actions">
+      <button id="langToggle" class="lang-btn" type="button">English</button>
+      <a class="header-link" href="#student-hub">Student Hub</a>
+      <a class="header-link" href="#search" data-i18n="checkResult">রেজাল্ট দেখুন</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow"><span class="pulse"></span><span data-i18n="heroEyebrow">আপনার ফলাফল, এক জায়গায়</span></div>
+        <h1 data-i18n="heroTitle">আপনার রেজাল্ট<br><span>সহজেই খুঁজুন</span></h1>
+        <p data-i18n="heroDesc">পরীক্ষা, বোর্ড, বছর ও রোল নম্বর দিয়ে ফলাফল খুঁজুন। ফলাফল সোর্সে পাওয়া গেলে তবেই আসল ফলাফল দেখানো হবে।</p>
+        <div class="hero-pills"><span>SSC</span><span>HSC</span><span>Dakhil</span><span>Alim</span><span>Technical</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orb orb-one"></div><div class="orb orb-two"></div>
+        <div class="result-preview">
+          <div class="preview-head"><span class="preview-icon">✓</span><span>ARIANBOARD</span><span class="verified-label">PORTAL</span></div>
+          <div class="preview-lines"><i></i><i></i><i></i></div>
+          <div class="preview-score"><div><small>RESULT STATUS</small><strong>Ready to Search</strong></div><span class="score-icon">↗</span></div>
+          <div class="preview-foot">CHECK BY ARIANBOARD</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="search-section" id="search">
+      <div class="section-heading">
+        <div><span class="section-kicker" data-i18n="searchKicker">RESULT FINDER</span><h2 data-i18n="searchTitle">রেজাল্ট সার্চ করুন</h2></div>
+        <span class="secure-note"><span class="lock">⌑</span><span data-i18n="secureNote">আপনার তথ্য শুধু সার্চের জন্য</span></span>
+      </div>
+      <form id="resultForm" class="search-card">
+        <div class="field-grid">
+          <label class="field"><span data-i18n="examLabel">পরীক্ষা</span>
+            <select id="exam" required>
+              <option value="SSC">SSC / এসএসসি</option>
+              <option value="HSC">HSC / এইচএসসি</option>
+              <option value="Dakhil">Dakhil / দাখিল</option>
+              <option value="Alim">Alim / আলিম</option>
+              <option value="Vocational">SSC Vocational / এসএসসি ভোকেশনাল</option>
+              <option value="Diploma">Diploma / ডিপ্লোমা</option>
+              <option value="Other">Other / অন্যান্য</option>
+            </select>
+          </label>
+          <label class="field"><span data-i18n="yearLabel">পরীক্ষার বছর</span>
+            <select id="year" required></select>
+          </label>
+          <label class="field"><span data-i18n="boardLabel">বোর্ড</span>
+            <select id="board" required>
+              <option value="Dhaka">Dhaka / ঢাকা</option>
+              <option value="Cumilla">Cumilla / কুমিল্লা</option>
+              <option value="Chittagong">Chittagong / চট্টগ্রাম</option>
+              <option value="Rajshahi">Rajshahi / রাজশাহী</option>
+              <option value="Jashore">Jashore / যশোর</option>
+              <option value="Barishal">Barishal / বরিশাল</option>
+              <option value="Sylhet">Sylhet / সিলেট</option>
+              <option value="Dinajpur">Dinajpur / দিনাজপুর</option>
+              <option value="Mymensingh">Mymensingh / ময়মনসিংহ</option>
+              <option value="Madrasah">Madrasah / মাদ্রাসা</option>
+              <option value="Technical">Technical / কারিগরি</option>
+              <option value="Other">Other / অন্যান্য</option>
+            </select>
+          </label>
+          <label class="field"><span data-i18n="rollLabel">রোল নম্বর</span><input id="roll" inputmode="numeric" autocomplete="off" placeholder="যেমন: 123456" required maxlength="20"></label>
+          <label class="field"><span data-i18n="regLabel">রেজিস্ট্রেশন নম্বর (ঐচ্ছিক)</span><input id="registration" inputmode="numeric" autocomplete="off" placeholder="Registration number" maxlength="24"></label>
+          <label class="field"><span data-i18n="resultTypeLabel">ফলাফলের ধরন</span>
+            <select id="resultType"><option value="individual">Individual Result / ব্যক্তিগত</option><option value="institution">Institution Result / প্রতিষ্ঠান</option></select>
+          </label>
+        </div>
+        <label class="consent"><input id="consent" type="checkbox" required><span data-i18n="consentText">আমি বুঝেছি, আসল ফলাফল দেখাতে কার্যকর ডেটা সোর্স প্রয়োজন; ডেমো ফলাফল সরকারি ফলাফল নয়।</span></label>
+        <button class="primary-btn" type="submit"><span data-i18n="searchBtn">রেজাল্ট খুঁজুন</span><span class="arrow">→</span></button>
+        <p class="form-note" data-i18n="formNote">ARIANBOARD কোনো সরকারি সংস্থা নয়। সরকারি ফলাফলের সত্যতা মূল উৎসে যাচাই করুন।</p>
+      </form>
+    </section>
+
+    <section id="resultArea" class="result-area" aria-live="polite"></section>
+
+    <section class="info-grid">
+      <article class="info-card"><div class="info-icon blue">⌕</div><h3 data-i18n="feature1Title">সহজ সার্চ</h3><p data-i18n="feature1Desc">পরীক্ষা, বছর, বোর্ড ও রোল দিয়ে দ্রুত খোঁজার জন্য সহজ ফর্ম।</p></article>
+      <article class="info-card"><div class="info-icon violet">▤</div><h3 data-i18n="feature2Title">পুরোনো বছরের ফলাফল</h3><p data-i18n="feature2Desc">পূর্ববর্তী বছরের ফলাফল পাওয়া যাবে যদি নির্ভরযোগ্য সোর্স বা সংরক্ষিত রেকর্ড থাকে।</p></article>
+      <article class="info-card"><div class="info-icon green">↗</div><h3 data-i18n="feature3Title">প্রিন্ট ও PDF</h3><p data-i18n="feature3Desc">প্রদর্শিত রেজাল্ট প্রিন্ট করুন বা ব্রাউজার থেকে PDF হিসেবে সেভ করুন।</p></article>
+    </section>
+
+
+<section class="premium-section" id="student-hub">
+  <div class="section-heading"><div><span class="section-kicker">ARIAN STUDENT HUB</span><h2>রেজাল্টের পরেও তোমার পথ আছে</h2></div><p class="hub-subtitle">Result • Admission • Skills • Motivation</p></div>
+  <div class="hub-grid">
+    <article class="hub-card featured"><span class="hub-icon">🎓</span><h3>University Guide</h3><p>বিষয়, খরচ, অবস্থান, স্বীকৃতি ও নিজের লক্ষ্য মিলিয়ে বিশ্ববিদ্যালয় বাছাই করো।</p><a href="#universities">বিশ্ববিদ্যালয় দেখো →</a></article>
+    <article class="hub-card"><span class="hub-icon">🧭</span><h3>Fail Recovery Plan</h3><p>ফেল বা কম GPA মানেই শেষ নয়। আগে কারণ বুঝে ছোট পরিকল্পনা তৈরি করো।</p><a href="#recovery">পরিকল্পনা শুরু →</a></article>
+    <article class="hub-card"><span class="hub-icon">📚</span><h3>Study Planner</h3><p>সময়, বিষয় ও দুর্বল অধ্যায় ধরে নিজের পড়ার রুটিন বানাও।</p><a href="#planner">রুটিন বানাও →</a></article>
+    <article class="hub-card"><span class="hub-icon">🧮</span><h3>GPA Calculator</h3><p>গ্রেড পয়েন্ট দিয়ে আনুমানিক GPA হিসাব করো। এটি অফিসিয়াল মার্কশিট নয়।</p><a href="#gpa-tool">হিসাব করো →</a></article>
+    <article class="hub-card"><span class="hub-icon">💡</span><h3>Daily Motivation</h3><p>প্রতিদিনের ছোট কাজ, ধারাবাহিকতা এবং আত্মবিশ্বাসের কথা।</p><a href="#motivation">অনুপ্রেরণা নাও →</a></article>
+    <article class="hub-card"><span class="hub-icon">🧠</span><h3>Study Techniques</h3><p>Active recall, spaced repetition, practice tests ও বিরতির ব্যবহার।</p><a href="#study-skills">শিখে নাও →</a></article>
+    <article class="hub-card"><span class="hub-icon">📝</span><h3>Admission Checklist</h3><p>যোগ্যতা, আবেদন-তারিখ, ফি, কাগজপত্র ও অফিসিয়াল বিজ্ঞপ্তি যাচাই করো।</p><a href="#admission">চেকলিস্ট →</a></article>
+    <article class="hub-card"><span class="hub-icon">🧰</span><h3>Career Explorer</h3><p>ডিগ্রির পাশাপাশি দক্ষতা, পোর্টফোলিও, ইন্টার্নশিপ ও বাস্তব অভিজ্ঞতা গড়ো।</p><a href="#career">ক্যারিয়ার দেখো →</a></article>
+  </div>
+</section>
+
+<section class="premium-section" id="universities">
+  <div class="section-heading"><div><span class="section-kicker">UNIVERSITY DIRECTORY</span><h2>বাংলাদেশের বিশ্ববিদ্যালয় খোঁজো</h2></div></div>
+  <p class="section-intro">“সেরা” বিশ্ববিদ্যালয় সবার জন্য এক নয়—বিষয়, ভর্তি-যোগ্যতা, খরচ, অবস্থান, ক্যাম্পাস, স্বীকৃতি ও ক্যারিয়ার লক্ষ্য মিলিয়ে সিদ্ধান্ত নাও। ভর্তি তথ্য পরিবর্তিত হয়, তাই অফিসিয়াল নোটিশ অবশ্যই যাচাই করবে।</p>
+  <div class="filter-row"><input id="uniSearch" type="search" placeholder="বিশ্ববিদ্যালয়ের নাম লিখো..." aria-label="Search universities"><select id="uniType" aria-label="Filter universities"><option value="all">সব ধরন</option><option value="public">সরকারি</option><option value="special">প্রকৌশল/বিশেষায়িত</option><option value="open">ওপেন/জাতীয়</option></select></div>
+  <div id="uniList" class="uni-list"></div>
+  <p class="tiny-note">তালিকাটি পরিচিত উদাহরণ; এটি র‍্যাঙ্কিং নয় এবং পূর্ণাঙ্গ তালিকার বিকল্প নয়। পূর্ণ সরকারি তালিকা: <a href="https://www.ugc.gov.bd/universities" target="_blank" rel="noopener">UGC Bangladesh ↗</a></p>
+</section>
+
+<section class="premium-section" id="recovery">
+  <div class="section-heading"><div><span class="section-kicker">RESET, DON'T QUIT</span><h2>ফেল করলে কী করা উচিত?</h2></div></div>
+  <div class="recovery-layout">
+    <div class="recovery-steps">
+      <div><b>01</b><span><strong>একটু থামো, নিজেকে দোষ দিও না</strong><small>কষ্ট লাগা স্বাভাবিক। ফলাফল তোমার পুরো পরিচয় নয়।</small></span></div>
+      <div><b>02</b><span><strong>ফলাফল ও নিয়ম যাচাই করো</strong><small>মার্কশিট, বিষয়ভিত্তিক গ্রেড, পুনঃনিরীক্ষণ ও পুনঃপরীক্ষার নিয়ম বোর্ডের অফিসিয়াল নোটিশে দেখো।</small></span></div>
+      <div><b>03</b><span><strong>কারণ বের করো</strong><small>কনসেপ্ট দুর্বল, অনুশীলন কম, সময় ব্যবস্থাপনা, অসুস্থতা নাকি পরীক্ষার ভয়—কোনটি প্রধান?</small></span></div>
+      <div><b>04</b><span><strong>১৪ দিনের ছোট পরিকল্পনা</strong><small>প্রতিদিন ২টি ফোকাস সেশন, ভুলের খাতা, ২০টি অনুশীলন প্রশ্ন ও সাপ্তাহিক মক টেস্ট।</small></span></div>
+      <div><b>05</b><span><strong>বিকল্প পথও যাচাই করো</strong><small>পরের পরীক্ষার সুযোগ, কারিগরি শিক্ষা, ডিপ্লোমা, উন্মুক্ত শিক্ষা বা দক্ষতাভিত্তিক পথ—যোগ্যতা মিলিয়ে দেখো।</small></span></div>
+    </div>
+    <aside class="support-card"><h3>মনে রেখো</h3><p>একটি ফলাফল তোমার ভবিষ্যতের চূড়ান্ত রায় নয়। বিশ্বস্ত শিক্ষক, অভিভাবক বা কাউন্সেলরের সঙ্গে কথা বলো।</p><p class="quote">“আজকের ভুলকে আগামী দিনের পরিকল্পনায় বদলে দাও।”</p><span>— Motivated by ARIAN</span></aside>
+  </div>
+</section>
+
+<section class="premium-section" id="planner">
+  <div class="section-heading"><div><span class="section-kicker">PERSONAL STUDY PLAN</span><h2>নিজের পড়ার রুটিন বানাও</h2></div></div>
+  <div class="tool-card">
+    <div class="tool-grid">
+      <label>প্রতিদিন কত ঘণ্টা? <input type="number" id="studyHours" min="1" max="12" value="4"></label>
+      <label>কয়টি বিষয়? <input type="number" id="studySubjects" min="1" max="10" value="3"></label>
+      <label>পড়ার শুরু <select id="studyStart"><option value="07:00">সকাল ৭টা</option><option value="09:00">সকাল ৯টা</option><option value="15:00">বিকেল ৩টা</option><option value="19:00">সন্ধ্যা ৭টা</option></select></label>
+    </div>
+    <button class="primary-btn" id="makePlan" type="button">আমার রুটিন বানাও →</button>
+    <div id="planOutput" class="tool-output" aria-live="polite">তথ্য দিয়ে রুটিন তৈরি করো। প্রতি ২৫–৫০ মিনিটে ছোট বিরতি রাখো।</div>
+  </div>
+</section>
+
+<section class="premium-section" id="gpa-tool">
+  <div class="section-heading"><div><span class="section-kicker">QUICK CALCULATOR</span><h2>GPA Calculator</h2></div></div>
+  <div class="tool-card"><p>প্রতিটি বিষয়ের গ্রেড পয়েন্ট কমা দিয়ে লেখো (যেমন: 5,4,4,3.5,5)। চূড়ান্ত GPA বোর্ডের নিয়ম, ঐচ্ছিক বিষয় ও বিষয়ভিত্তিক শর্তের ওপর নির্ভর করতে পারে।</p>
+    <label>Grade points <input id="gradePoints" placeholder="5, 4, 4, 3.5, 5"></label>
+    <button class="primary-btn" id="calcGpa" type="button">GPA হিসাব করো</button><div id="gpaOutput" class="tool-output" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="premium-section" id="motivation">
+  <div class="section-heading"><div><span class="section-kicker">DAILY MINDSET</span><h2>ARIAN-এর অনুপ্রেরণা</h2></div></div>
+  <div class="motivation-panel"><div class="motivation-mark">“</div><p id="quoteText">বড় স্বপ্নের জন্য প্রতিদিন ছোট কিন্তু সত্যিকারের পদক্ষেপ নাও।</p><span id="quoteAuthor">— Talha Jubayer Arian</span><button id="newQuote" type="button" class="secondary-btn">আরেকটি অনুপ্রেরণা ↻</button></div>
+  <div class="motivation-grid">
+    <article class="hub-card"><h3>নিজের গতিতে এগোও</h3><p>অন্যের সঙ্গে তুলনা নয়; গতকালের নিজের চেয়ে আজ একটু ভালো হও।</p></article>
+    <article class="hub-card"><h3>ভুল মানেই শেখা</h3><p>ভুলের খাতা রাখো। একই ভুল দ্বিতীয়বার কম করাই অগ্রগতি।</p></article>
+    <article class="hub-card"><h3>বিশ্রামও পরিকল্পনা</h3><p>ঘুম, খাবার, পানি ও বিরতি মনোযোগের অংশ—অলসতা নয়।</p></article>
+  </div>
+</section>
+
+<section class="premium-section" id="study-skills">
+  <div class="section-heading"><div><span class="section-kicker">LEARN SMARTER</span><h2>পড়াশোনার ১২টি কার্যকর কৌশল</h2></div></div>
+  <div class="tips-grid">
+    <article><b>01</b><strong>Active Recall</strong><p>বই বন্ধ করে নিজেকে প্রশ্ন করো।</p></article>
+    <article><b>02</b><strong>Spaced Repetition</strong><p>একই বিষয় কয়েক দিনের ব্যবধানে আবার দেখো।</p></article>
+    <article><b>03</b><strong>Practice Test</strong><p>সময় ধরে প্রশ্ন সমাধান করো।</p></article>
+    <article><b>04</b><strong>Error Log</strong><p>ভুল, কারণ ও সঠিক পদ্ধতি লিখে রাখো।</p></article>
+    <article><b>05</b><strong>Teach Back</strong><p>কাউকে শেখানোর মতো করে ব্যাখ্যা করো।</p></article>
+    <article><b>06</b><strong>One Task</strong><p>এক সময়ে একটিই কাজ করো।</p></article>
+    <article><b>07</b><strong>Past Questions</strong><p>সিলেবাস মিলিয়ে বিগত প্রশ্ন অনুশীলন করো।</p></article>
+    <article><b>08</b><strong>Weekly Review</strong><p>সপ্তাহ শেষে কী শিখেছ যাচাই করো।</p></article>
+    <article><b>09</b><strong>Small Goals</strong><p>“গণিত পড়ব” নয়—“১০টি অঙ্ক করব” বলো।</p></article>
+    <article><b>10</b><strong>Phone Away</strong><p>ফোকাস সেশনে নোটিফিকেশন বন্ধ রাখো।</p></article>
+    <article><b>11</b><strong>Sleep Well</strong><p>ঘুম কমিয়ে নয়, নিয়মিত ঘুমিয়ে শিখো।</p></article>
+    <article><b>12</b><strong>Ask for Help</strong><p>একই জায়গায় আটকে থাকলে শিক্ষককে জিজ্ঞেস করো।</p></article>
+  </div>
+</section>
+
+<section class="premium-section" id="admission">
+  <div class="section-heading"><div><span class="section-kicker">ADMISSION CHECKLIST</span><h2>ভর্তির আগে যা যাচাই করবে</h2></div></div>
+  <div class="checklist-card">
+    <label><input type="checkbox"> আমার যোগ্যতা ও ইউনিটের শর্ত মিলেছে</label>
+    <label><input type="checkbox"> সর্বশেষ অফিসিয়াল ভর্তি বিজ্ঞপ্তি পড়েছি</label>
+    <label><input type="checkbox"> আবেদনের শেষ তারিখ ক্যালেন্ডারে রেখেছি</label>
+    <label><input type="checkbox"> আবেদন ফি ও পেমেন্ট পদ্ধতি যাচাই করেছি</label>
+    <label><input type="checkbox"> ছবি, স্বাক্ষর, নম্বরপত্র ও প্রয়োজনীয় কাগজ প্রস্তুত</label>
+    <label><input type="checkbox"> আবেদন শেষে রসিদ/ট্র্যাকিং নম্বর সংরক্ষণ করেছি</label>
+    <label><input type="checkbox"> প্রবেশপত্র ডাউনলোডের তারিখ নোট করেছি</label>
+    <label><input type="checkbox"> যাতায়াত, থাকার জায়গা ও পরীক্ষার সময় পরিকল্পনা করেছি</label>
+  </div>
+  <p class="tiny-note">তারিখ/যোগ্যতা প্রতি বছর বদলাতে পারে। কেবল অফিসিয়াল বিশ্ববিদ্যালয় বা ভর্তি পোর্টালের বিজ্ঞপ্তিকে চূড়ান্ত ধরো।</p>
+</section>
+
+<section class="premium-section" id="career">
+  <div class="section-heading"><div><span class="section-kicker">FUTURE READY</span><h2>ডিগ্রির পাশাপাশি দক্ষতা গড়ো</h2></div></div>
+  <div class="hub-grid">
+    <article class="hub-card"><h3>💻 Digital Skills</h3><p>Typing, spreadsheets, research, presentation, basic coding ও নিরাপদ অনলাইন অভ্যাস।</p></article>
+    <article class="hub-card"><h3>🗣️ Communication</h3><p>বাংলা-ইংরেজি লেখা, কথা বলা, ইমেইল, teamwork ও interview practice।</p></article>
+    <article class="hub-card"><h3>🧪 Portfolio</h3><p>নিজের ৩টি ভালো project তৈরি করে কী শিখেছ তা পরিষ্কারভাবে দেখাও।</p></article>
+    <article class="hub-card"><h3>🤝 Experience</h3><p>স্বেচ্ছাসেবা, ক্লাব, internship বা বাস্তব কাজের মাধ্যমে অভিজ্ঞতা অর্জন করো।</p></article>
+  </div>
+</section>
+
+<section class="premium-section" id="book">
+  <div class="book-promo">
+    <img class="book-cover-image" src="ARIAN-Book-Cover.png" alt="Dream Plan Achieve motivational book cover by Talha Jubayer Arian" loading="lazy">
+    <div><span class="section-kicker">A BOOK BY TALHA JUBAYER ARIAN</span><h2>Dream. Plan. Achieve.</h2><p>ফলাফল, ব্যর্থতা, আত্মবিশ্বাস, পড়াশোনার কৌশল, ভর্তি পরিকল্পনা ও ভবিষ্যৎ গড়ার বাংলা গাইড।</p><p><strong>Motivated by ARIAN</strong> · Writer: Talha Jubayer Arian</p><a class="primary-btn inline-btn" href="ARIAN-Dream-Plan-Achieve-Book.pdf" download>বইটি PDF ডাউনলোড ↗</a></div>
+  </div>
+</section>
+
+<section class="premium-section" id="official-links">
+  <div class="section-heading"><div><span class="section-kicker">TRUSTED SOURCES</span><h2>গুরুত্বপূর্ণ অফিসিয়াল লিংক</h2></div></div>
+  <div class="hub-grid">
+    <a class="hub-card link-card" href="https://eboardresults.com/v2/home" target="_blank" rel="noopener"><h3>Education Board Results</h3><p>ফলাফল ও মার্কশিট যাচাই</p>ওয়েবসাইট খুলুন ↗</a>
+    <a class="hub-card link-card" href="https://www.ugc.gov.bd/universities" target="_blank" rel="noopener"><h3>UGC University Directory</h3><p>বিশ্ববিদ্যালয়ের স্বীকৃতি ও তালিকা</p>ওয়েবসাইট খুলুন ↗</a>
+    <a class="hub-card link-card" href="https://gstadmission.ac.bd/" target="_blank" rel="noopener"><h3>GST Admission</h3><p>গুচ্ছ ভর্তি সংক্রান্ত নোটিশ</p>ওয়েবসাইট খুলুন ↗</a>
+    <a class="hub-card link-card" href="https://www.nu.ac.bd/" target="_blank" rel="noopener"><h3>National University</h3><p>জাতীয় বিশ্ববিদ্যালয়ের নোটিশ</p>ওয়েবসাইট খুলুন ↗</a>
+  </div>
+</section>
+
+    <section class="source-box">
+      <div class="source-icon">i</div>
+      <div><h3 data-i18n="sourceTitle">ফলাফল কোথা থেকে আসবে?</h3><p data-i18n="sourceDesc">এই GitHub Pages সংস্করণে লাইভ সরকারি ডেটা API যুক্ত নেই। আসল ফলাফল দেখাতে অনুমোদিত API/ডেটা সোর্স বা নির্ভরযোগ্য ডেটাসেট যুক্ত করতে হবে। CAPTCHA বা অন্য অ্যাক্সেস-নিয়ন্ত্রণ এড়িয়ে ফলাফল সংগ্রহ করা হয় না।</p>
+        <div class="source-links">
+          <a href="https://eboardresults.com/v2/home" target="_blank" rel="noopener noreferrer">eBoard Results ↗</a>
+          <a href="https://educationboardresults.gov.bd/" target="_blank" rel="noopener noreferrer">Education Board Results ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="footer-brand" href="./">ARIANBOARD</a>
+    <p data-i18n="footerDisclaimer">স্বতন্ত্র তথ্য-সহায়ক পোর্টাল; সরকারি ওয়েবসাইট নয়।</p>
+    <div class="footer-stamp">CHECK BY ARIANBOARD</div>
+    <small>© <span id="currentYear"></span> ARIANBOARD. <span data-i18n="rights">All rights reserved.</span></small>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
