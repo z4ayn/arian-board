@@ -255,3 +255,79 @@ document.getElementById("newQuote")?.addEventListener("click",()=>{
  document.getElementById("quoteText").textContent=q;
  document.getElementById("quoteAuthor").textContent="— Talha Jubayer Arian";
 });
+
+// ARIANBOARD v4 Student Toolkit
+(()=>{
+ const $=id=>document.getElementById(id);
+ const read=(k,d)=>{try{return JSON.parse(localStorage.getItem("arian_v4_"+k))??d}catch{return d}};
+ const save=(k,v)=>{try{localStorage.setItem("arian_v4_"+k,JSON.stringify(v))}catch{}};
+ // Focus timer
+ let remaining=25*60, tick=null;
+ const display=()=>{if($("timerDisplay"))$("timerDisplay").textContent=String(Math.floor(remaining/60)).padStart(2,"0")+":"+String(remaining%60).padStart(2,"0")};
+ $("timerStart")?.addEventListener("click",()=>{if(tick){clearInterval(tick);tick=null;$("timerStart").textContent="চালু করো";return}
+   if(remaining<=0)remaining=Math.max(1,Math.min(180,Number($("focusMinutes").value)||25))*60;
+   $("timerStart").textContent="পজ";$("timerStatus").textContent="ফোকাস চলছে—একটি কাজেই মন দাও";
+   tick=setInterval(()=>{remaining--;display();if(remaining<=0){clearInterval(tick);tick=null;$("timerStart").textContent="আবার শুরু";$("timerStatus").textContent="সেশন শেষ! ৫ মিনিট বিরতি নাও।";}},1000);
+ });
+ $("timerReset")?.addEventListener("click",()=>{if(tick)clearInterval(tick);tick=null;remaining=Math.max(1,Math.min(180,Number($("focusMinutes").value)||25))*60;display();$("timerStart").textContent="শুরু";$("timerStatus").textContent="ফোকাস সেশন প্রস্তুত"});
+ $("focusMinutes")?.addEventListener("change",()=>{$("timerReset")?.click()});display();
+ // Tasks
+ let tasks=read("tasks",[]);
+ const drawTasks=()=>{if(!$("taskList"))return;$("taskList").innerHTML="";tasks.forEach((t,i)=>{const li=document.createElement("li");const cb=document.createElement("input");cb.type="checkbox";cb.checked=t.done;cb.addEventListener("change",()=>{tasks[i].done=cb.checked;save("tasks",tasks);drawTasks()});const s=document.createElement("span");s.textContent=t.text;s.style.textDecoration=t.done?"line-through":"none";const del=document.createElement("button");del.textContent="মুছুন";del.addEventListener("click",()=>{tasks.splice(i,1);save("tasks",tasks);drawTasks()});li.append(cb,s,del);$("taskList").append(li)});$("taskCount").textContent=`${tasks.filter(t=>!t.done).length}টি বাকি · মোট ${tasks.length}টি`};
+ $("addTask")?.addEventListener("click",()=>{const v=$("taskInput").value.trim();if(!v)return;tasks.push({text:v,done:false});$("taskInput").value="";save("tasks",tasks);drawTasks()});drawTasks();
+ // Habits
+ let habits=read("habits",[]);
+ const drawHabits=()=>{if(!$("habitList"))return;$("habitList").innerHTML="";habits.forEach((h,i)=>{const d=document.createElement("div");d.className="habit-item";const s=document.createElement("span");s.textContent=h.name+" · "+h.count+" দিন";const b=document.createElement("button");b.textContent="আজ করেছি ✓";b.addEventListener("click",()=>{const today=new Date().toDateString();if(h.last!==today){h.count++;h.last=today;save("habits",habits);drawHabits()}});const x=document.createElement("button");x.textContent="×";x.addEventListener("click",()=>{habits.splice(i,1);save("habits",habits);drawHabits()});d.append(s,b,x);$("habitList").append(d)})};
+ $("addHabit")?.addEventListener("click",()=>{const v=$("habitInput").value.trim();if(!v)return;habits.push({name:v,count:0,last:""});$("habitInput").value="";save("habits",habits);drawHabits()});drawHabits();
+ // Notes
+ if($("quickNotes")){$("quickNotes").value=read("notes","");$("quickNotes").addEventListener("input",()=>{save("notes",$("quickNotes").value);$("noteStatus").textContent="সেভ হয়েছে ✓"})}
+ // Flashcards
+ let cards=read("cards",[]), cardIndex=0, answerShown=false;
+ const showCard=()=>{const v=$("flashView");if(!v)return;if(!cards.length){v.textContent="এখনো কোনো কার্ড নেই।";return}const c=cards[cardIndex%cards.length];v.textContent=answerShown?"উত্তর: "+c.a:"প্রশ্ন: "+c.q+"\\n(উত্তর দেখতে আবার 'কার্ড দেখো' চাপো)";};
+ $("addFlash")?.addEventListener("click",()=>{const q=$("flashQ").value.trim(),a=$("flashA").value.trim();if(!q||!a)return;cards.push({q,a});save("cards",cards);$("flashQ").value="";$("flashA").value="";cardIndex=cards.length-1;answerShown=false;showCard()});
+ $("nextFlash")?.addEventListener("click",()=>{if(!cards.length)return; if(!answerShown)answerShown=true;else{cardIndex=(cardIndex+1)%cards.length;answerShown=false}showCard()});showCard();
+ // Budget
+ $("budgetCalc")?.addEventListener("click",()=>{const total=Math.max(0,Number($("budgetTotal").value)||0),spent=Math.max(0,Number($("budgetSpent").value)||0);$("budgetOutput").textContent=`${spent>total?"বাজেট ছাড়িয়েছে: ":"অবশিষ্ট: "}৳${Math.abs(total-spent).toLocaleString("bn-BD")}`});
+ // Deadlines
+ let deadlines=read("deadlines",[]);
+ const drawDeadlines=()=>{if(!$("deadlineList"))return;$("deadlineList").innerHTML="";deadlines.sort((a,b)=>a.date.localeCompare(b.date)).forEach((d,i)=>{const li=document.createElement("li");const days=Math.ceil((new Date(d.date+"T23:59:59")-new Date())/86400000);li.textContent=`${d.name} — ${d.date} (${days<0?"সময় পেরিয়েছে":days===0?"আজ":days+" দিন বাকি"})`;const x=document.createElement("button");x.textContent="মুছুন";x.onclick=()=>{deadlines.splice(i,1);save("deadlines",deadlines);drawDeadlines()};li.append(x);$("deadlineList").append(li)})};
+ $("addDeadline")?.addEventListener("click",()=>{const name=$("deadlineName").value.trim(),date=$("deadlineDate").value;if(!name||!date)return;deadlines.push({name,date});save("deadlines",deadlines);$("deadlineName").value="";drawDeadlines()});drawDeadlines();
+ // Goal
+ $("saveGoal")?.addEventListener("click",()=>{const name=$("goalName").value.trim(),step=$("goalStep").value.trim();if(!name||!step)return;save("goal",{name,step});$("goalOutput").textContent=`লক্ষ্য: ${name}\\nআজকের পদক্ষেপ: ${step}`});
+ const goal=read("goal",null);if(goal&&$("goalOutput"))$("goalOutput").textContent=`লক্ষ্য: ${goal.name}\\nআজকের পদক্ষেপ: ${goal.step}`;
+ // Resource library: 120 practical, categorized learning prompts and checklists.
+ const seed=[
+ ["পড়াশোনা","study","Active Recall","বই বন্ধ করে ৫টি প্রশ্নের উত্তর নিজের ভাষায় লিখো; পরে বইয়ের সঙ্গে মিলিয়ে ভুল ঠিক করো।"],
+ ["পড়াশোনা","study","Spaced Revision","আজ শেখা বিষয় ১ দিন, ৩ দিন, ৭ দিন ও ১৪ দিন পর সংক্ষেপে রিভিশন দাও।"],
+ ["পড়াশোনা","study","ভুলের খাতা","প্রতিটি ভুলের পাশে ভুলের কারণ, সঠিক নিয়ম ও পরেরবার কীভাবে ধরবে লিখে রাখো।"],
+ ["পড়াশোনা","study","কঠিন অধ্যায় ভাঙা","অধ্যায়কে ২০–৩০ মিনিটের ছোট অংশে ভাগ করে প্রতিটি অংশ শেষে নিজেকে পরীক্ষা করো।"],
+ ["পড়াশোনা","study","নিজেকে শেখাও","একটি ধারণা ১২ বছরের কাউকে বোঝানোর মতো সহজ ভাষায় ব্যাখ্যা করো।"],
+ ["পরীক্ষা","exam","সময় ভাগ","মোট সময় থেকে শেষ ১০ মিনিট যাচাইয়ের জন্য রেখে প্রশ্নের নম্বর অনুযায়ী সময় ভাগ করো।"],
+ ["পরীক্ষা","exam","প্রশ্ন বিশ্লেষণ","প্রশ্নে নির্দেশক শব্দ—ব্যাখ্যা, তুলনা, প্রমাণ, নির্ণয়—আন্ডারলাইন করো।"],
+ ["পরীক্ষা","exam","মক টেস্ট","সপ্তাহে অন্তত একটি সময়বদ্ধ মক টেস্ট দিয়ে ভুলের ধরন বিশ্লেষণ করো।"],
+ ["পরীক্ষা","exam","পরীক্ষার আগের রাত","নতুন অধ্যায় শুরু না করে সূত্র, সংজ্ঞা, ভুলের খাতা ও প্রয়োজনীয় জিনিস গুছিয়ে ঘুমাও।"],
+ ["ভর্তি","admission","যোগ্যতা যাচাই","SSC/HSC GPA, পাশের বছর, বিভাগ ও বিষয়ভিত্তিক শর্ত সর্বশেষ অফিসিয়াল সার্কুলারে মিলিয়ে নাও।"],
+ ["ভর্তি","admission","আবেদন নথি","ছবি, স্বাক্ষর, নম্বরপত্র, পরিচয়তথ্য ও পেমেন্ট রসিদ আলাদা ফোল্ডারে রাখো।"],
+ ["ভর্তি","admission","ভর্তি খরচ","আবেদন ফি, যাতায়াত, থাকা, বই ও প্রথম সেমিস্টারের সম্ভাব্য খরচ আলাদা হিসাব করো।"],
+ ["ভর্তি","admission","বিশ্ববিদ্যালয় তুলনা","বিষয়, স্বীকৃতি, শিক্ষক, ল্যাব, খরচ, অবস্থান ও স্নাতকের সুযোগ তুলনা করো।"],
+ ["ক্যারিয়ার","career","CV-এর প্রমাণ","দক্ষতা লেখার বদলে কাজের উদাহরণ দাও—কী বানিয়েছ, কী দায়িত্ব নিয়েছ, কী ফল হয়েছে।"],
+ ["ক্যারিয়ার","career","পোর্টফোলিও","নিজের ৩টি প্রকল্পে সমস্যা, তোমার ভূমিকা, ব্যবহৃত টুল ও শেখা বিষয় লিখে রাখো।"],
+ ["ক্যারিয়ার","career","ইন্টারভিউ প্রস্তুতি","নিজের পরিচয়, একটি চ্যালেঞ্জ, একটি সাফল্য ও শেখার আগ্রহ—প্রতিটির ৬০ সেকেন্ডের উত্তর অনুশীলন করো।"],
+ ["জীবনদক্ষতা","life","ডিজিটাল নিরাপত্তা","প্রতিটি গুরুত্বপূর্ণ অ্যাকাউন্টে আলাদা পাসওয়ার্ড ও সম্ভব হলে 2-step verification চালু করো।"],
+ ["জীবনদক্ষতা","life","সাপ্তাহিক পর্যালোচনা","কী শেষ, কী বাকি, কোথায় সময় নষ্ট, আগামী সপ্তাহের ৩টি অগ্রাধিকার লিখো।"],
+ ["জীবনদক্ষতা","life","মানসিক চাপ","চাপ বেশি হলে কাজ ছোট করো, বিরতি নাও এবং বিশ্বস্ত মানুষ বা উপযুক্ত সহায়তার সঙ্গে কথা বলো।"],
+ ["জীবনদক্ষতা","life","অর্থ ব্যবস্থাপনা","খরচকে প্রয়োজন, শিক্ষা, যাতায়াত ও ইচ্ছার ভাগে লিখে মাস শেষে পর্যালোচনা করো।"]
+ ];
+ const variants=[
+ ["দৈনিক অনুশীলন","আজ ২০ মিনিট সময় ধরে প্রয়োগ করো। শেষে কী শিখলে এক লাইনে লিখো।"],
+ ["সাপ্তাহিক লক্ষ্য","এই সপ্তাহে তিনবার প্রয়োগ করে ফলাফল নোট করো।"],
+ ["নিজেকে যাচাই","কাজটি না দেখে মনে করার চেষ্টা করো; আটকে গেলে দুর্বল জায়গা চিহ্নিত করো।"],
+ ["বন্ধুকে শেখাও","বন্ধুকে বা নিজের কণ্ঠে ২ মিনিটে বিষয়টি বুঝিয়ে বলো।"],
+ ["প্রগতি মাপো","আগের সপ্তাহের তুলনায় একটি পরিমাপযোগ্য উন্নতি ঠিক করো।"]
+ ];
+ const resources=[];seed.forEach(s=>{resources.push({title:s[2],cat:s[1],desc:s[3],tag:s[0]});variants.forEach(v=>resources.push({title:s[2]+" · "+v[0],cat:s[1],desc:s[3]+" "+v[1],tag:s[0]}))});
+ // 120+ distinct practical cards; deterministic, searchable and offline.
+ for(let i=0;i<resources.length;i++){resources[i].id=i+1}
+ const renderResources=()=>{const box=$("resourceList");if(!box)return;const q=($("resourceSearch").value||"").toLowerCase(),cat=$("resourceCategory").value;const rows=resources.filter(r=>(cat==="all"||r.cat===cat)&&(r.title+" "+r.desc+" "+r.tag).toLowerCase().includes(q));box.innerHTML=rows.map(r=>`<article class="resource-item"><small>${r.tag} · #${r.id}</small><h3>${r.title}</h3><p>${r.desc}</p></article>`).join("")||"<p>কোনো গাইড পাওয়া যায়নি।</p>"};
+ $("resourceSearch")?.addEventListener("input",renderResources);$("resourceCategory")?.addEventListener("change",renderResources);renderResources();
+})();

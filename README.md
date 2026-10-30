@@ -1,33 +1,20 @@
-# ARIANBOARD — Your Result, Your Future
+# ARIANBOARD Ultimate v4
 
-A responsive bilingual (Bangla/English) student-support portal designed for GitHub Pages.
+A bilingual-ready Bangladesh student result companion and learning toolkit.
 
-## Included
-- Education result form with transparent handoff to the official eBoard portal (no fake results, no CAPTCHA bypass)
-- Student Hub with university directory examples and official links
-- University search and type filters
-- Fail/recovery guide
-- Personal study planner
-- Approximate GPA calculator (not an official board calculation)
-- Daily motivation quote rotation
-- Study technique cards, admission checklist, career skills, official links
-- Book download area for *Dream. Plan. Achieve.* by Talha Jubayer Arian
-- Print/PDF browser support for pages/results where available
-- Responsive mobile-first styling
+## What's new
+- Student Toolkit: focus timer, daily task list, habit tracker, quick notes, flashcards, student budget, deadline tracker and goal builder.
+- Searchable practical resource library with categorized study, exam, admission, career and life-skill guides.
+- Rewritten Bengali student guidebook (24 distinct chapters, exercises and action plans) in PDF and DOCX.
+- Existing result handoff and university guide retained.
 
-## Deploy to GitHub Pages
-1. Upload/replace `index.html`, `styles.css`, `app.js`, `.nojekyll`, `README.md` in your repository.
-2. Commit to the `main` branch.
-3. In GitHub: Settings → Pages → Deploy from a branch → `main` / root.
-4. Add `ARIAN-Dream-Plan-Achieve-Book.pdf` to the repository root to enable the book download link.
+## Deploy on GitHub Pages
+1. Extract this ZIP.
+2. Upload all files and folders to the root of `z4ayn/arian-board` (do not delete your existing repository unless you intentionally want a full replacement).
+3. Commit changes. Keep `index.html`, `styles.css`, `app.js`, `.nojekyll`, the book PDF and cover in the same root folder.
+4. Open GitHub Pages URL after deployment.
 
 ## Important
-This static GitHub Pages project does **not** have direct access to an official exam-result database. The result form hands off entered details to the official eBoard portal as a best-effort URL; the portal may ignore query parameters and may ask you to re-enter details and solve its own CAPTCHA. Real result retrieval requires an authorized API/data source or a properly permitted backend. Do not publish fake results as official data.
+ARIANBOARD is an independent student information portal, not a government agency. This static GitHub Pages build does not contain a live government result API. The result form hands the user to the official result portal; users must complete any CAPTCHA themselves. Never treat demo output as an official result.
 
-The university list is a starter directory, not a ranking or a complete directory. Always verify recognition, programme details, eligibility, deadlines, tuition and admission rules from official university/UGC sources. The GPA calculator is approximate and is not a substitute for an official marksheet.
-
-## Branding
-Motivated by ARIAN · Writer: Talha Jubayer Arian
-
-## Book
-`ARIAN-Dream-Plan-Achieve-Book.pdf` is a 50-page motivational guide. `ARIAN-Book-Cover.png` is the cover artwork. The editable DOCX is supplied separately in the download links.
+Toolkit notes, tasks, habits, flashcards, deadlines and goals are stored locally in the current browser using localStorage. Clearing browser data may remove them.

@@ -19,7 +19,7 @@
     </a>
     <div class="header-actions">
       <button id="langToggle" class="lang-btn" type="button">English</button>
-      <a class="header-link" href="#student-hub">Student Hub</a>
+      <a class="header-link" href="#student-hub">Student Hub</a><a class="header-link" href="#toolkit">Toolkit</a>
       <a class="header-link" href="#search" data-i18n="checkResult">রেজাল্ট দেখুন</a>
     </div>
   </header>
@@ -114,6 +114,49 @@
     <article class="hub-card"><span class="hub-icon">🧰</span><h3>Career Explorer</h3><p>ডিগ্রির পাশাপাশি দক্ষতা, পোর্টফোলিও, ইন্টার্নশিপ ও বাস্তব অভিজ্ঞতা গড়ো।</p><a href="#career">ক্যারিয়ার দেখো →</a></article>
   </div>
 </section>
+
+
+
+<section class="premium-section" id="toolkit">
+  <div class="section-heading"><div><span class="section-kicker">ARIAN STUDENT TOOLKIT · NEW</span><h2>এক জায়গায় তোমার পড়াশোনার টুলবক্স</h2></div></div>
+  <p class="section-intro">এই টুলগুলো নিজের পড়াশোনা গুছাতে ব্যবহার করো। ব্যক্তিগত নোট ও ট্র্যাকার এই ব্রাউজারেই সেভ হয়; অন্য ডিভাইসে নিজে থেকে যাবে না।</p>
+  <div class="tool-grid">
+    <article class="tool-card"><h3>⏱️ Focus Timer</h3><p>২৫ মিনিট পড়া, ৫ মিনিট বিরতি—নিজের মতো সময়ও সেট করতে পারো।</p>
+      <div class="timer-display" id="timerDisplay">25:00</div>
+      <div class="tool-row"><input id="focusMinutes" type="number" min="1" max="180" value="25" aria-label="Focus minutes"><button class="mini-btn" id="timerStart">শুরু</button><button class="mini-btn ghost" id="timerReset">রিসেট</button></div><small id="timerStatus">ফোকাস সেশন প্রস্তুত</small>
+    </article>
+    <article class="tool-card"><h3>✅ Daily Task List</h3><p>আজকের কাজ যোগ করো, শেষ হলে টিক দাও।</p>
+      <div class="tool-row"><input id="taskInput" placeholder="যেমন: জীববিজ্ঞান অধ্যায় ৩"><button class="mini-btn" id="addTask">যোগ</button></div><ul id="taskList" class="task-list"></ul><small id="taskCount">০টি কাজ</small>
+    </article>
+    <article class="tool-card"><h3>🌱 Habit Tracker</h3><p>পানি, পড়া, ব্যায়াম বা ঘুম—নিজের অভ্যাস ট্র্যাক করো।</p>
+      <div class="tool-row"><input id="habitInput" placeholder="নতুন অভ্যাস"><button class="mini-btn" id="addHabit">যোগ</button></div><div id="habitList" class="habit-list"></div>
+    </article>
+    <article class="tool-card"><h3>🗂️ Quick Notes</h3><p>ক্লাস নোট, প্রশ্ন বা আইডিয়া লিখে রাখো।</p>
+      <textarea id="quickNotes" rows="5" placeholder="তোমার নোট এখানে লিখো..."></textarea><small id="noteStatus">স্বয়ংক্রিয়ভাবে সেভ হবে</small>
+    </article>
+    <article class="tool-card"><h3>🧠 Flashcards</h3><p>নিজের প্রশ্ন-উত্তর তৈরি করে Active Recall অনুশীলন করো।</p>
+      <input id="flashQ" placeholder="প্রশ্ন লিখো"><input id="flashA" placeholder="উত্তর লিখো"><div class="tool-row"><button class="mini-btn" id="addFlash">কার্ড যোগ</button><button class="mini-btn ghost" id="nextFlash">কার্ড দেখো</button></div><div id="flashView" class="flash-view">এখনো কোনো কার্ড নেই।</div>
+    </article>
+    <article class="tool-card"><h3>💰 Student Budget</h3><p>মাসিক খরচের পরিকল্পনা করে কত টাকা বাকি থাকে দেখো।</p>
+      <label>মাসিক বাজেট (৳)<input id="budgetTotal" type="number" value="5000" min="0"></label><label>খরচ (৳)<input id="budgetSpent" type="number" value="0" min="0"></label><button class="mini-btn" id="budgetCalc">হিসাব করো</button><strong id="budgetOutput">অবশিষ্ট: ৳৫,০০০</strong>
+    </article>
+    <article class="tool-card"><h3>📅 Deadline Tracker</h3><p>পরীক্ষা, আবেদন বা ফি জমার শেষ তারিখের কাউন্টডাউন।</p>
+      <input id="deadlineName" placeholder="ডেডলাইনের নাম"><input id="deadlineDate" type="date"><button class="mini-btn" id="addDeadline">ডেডলাইন যোগ</button><ul id="deadlineList" class="task-list"></ul>
+    </article>
+    <article class="tool-card"><h3>🎯 Goal Builder</h3><p>বড় লক্ষ্যকে ছোট, মাপা যায় এমন কাজে ভাঙো।</p>
+      <input id="goalName" placeholder="আমার লক্ষ্য"><input id="goalStep" placeholder="আজকের ছোট পদক্ষেপ"><button class="mini-btn" id="saveGoal">লক্ষ্য সেভ</button><div id="goalOutput" class="saved-output">এখনো কোনো লক্ষ্য যোগ করোনি।</div>
+    </article>
+  </div>
+  <div class="privacy-note">🔒 গোপনীয়তা: এই টুলগুলোর তথ্য তোমার ডিভাইসের browser local storage-এ থাকে। পাবলিক/শেয়ারড ফোনে ব্যক্তিগত তথ্য রেখো না। Browser data মুছলে সেভ করা তথ্যও মুছে যেতে পারে।</div>
+</section>
+
+<section class="premium-section" id="resource-library">
+  <div class="section-heading"><div><span class="section-kicker">PRACTICAL RESOURCE LIBRARY</span><h2>দ্রুত কাজে লাগবে এমন গাইড</h2></div></div>
+  <div class="filter-row"><input id="resourceSearch" type="search" placeholder="যেমন: গণিত, ইংরেজি, ভর্তি, CV..."><select id="resourceCategory"><option value="all">সব বিষয়</option><option value="study">পড়াশোনা</option><option value="exam">পরীক্ষা</option><option value="admission">ভর্তি</option><option value="career">ক্যারিয়ার</option><option value="life">জীবনদক্ষতা</option></select></div>
+  <div id="resourceList" class="resource-grid"></div>
+  <p class="tiny-note">প্রতিটি গাইড সাধারণ শিক্ষামূলক সহায়তা। ভর্তি, বৃত্তি, পরীক্ষা ও চাকরির সর্বশেষ নিয়ম সংশ্লিষ্ট অফিসিয়াল উৎসে যাচাই করবে।</p>
+</section>
+
 
 <section class="premium-section" id="universities">
   <div class="section-heading"><div><span class="section-kicker">UNIVERSITY DIRECTORY</span><h2>বাংলাদেশের বিশ্ববিদ্যালয় খোঁজো</h2></div></div>
@@ -214,7 +257,7 @@
 <section class="premium-section" id="book">
   <div class="book-promo">
     <img class="book-cover-image" src="ARIAN-Book-Cover.png" alt="Dream Plan Achieve motivational book cover by Talha Jubayer Arian" loading="lazy">
-    <div><span class="section-kicker">A BOOK BY TALHA JUBAYER ARIAN</span><h2>Dream. Plan. Achieve.</h2><p>ফলাফল, ব্যর্থতা, আত্মবিশ্বাস, পড়াশোনার কৌশল, ভর্তি পরিকল্পনা ও ভবিষ্যৎ গড়ার বাংলা গাইড।</p><p><strong>Motivated by ARIAN</strong> · Writer: Talha Jubayer Arian</p><a class="primary-btn inline-btn" href="ARIAN-Dream-Plan-Achieve-Book.pdf" download>বইটি PDF ডাউনলোড ↗</a></div>
+    <div><span class="section-kicker">A NEW EDITION · TALHA JUBAYER ARIAN</span><h2>Dream. Plan. Achieve.</h2><p>ফলাফল, ব্যর্থতা, আত্মবিশ্বাস, পড়াশোনার কৌশল, ভর্তি পরিকল্পনা ও ভবিষ্যৎ গড়ার বাংলা গাইড।</p><p><strong>Motivated by ARIAN</strong> · Writer: Talha Jubayer Arian</p><a class="primary-btn inline-btn" href="ARIAN-Dream-Plan-Achieve-Book-v2.pdf" download>বইটি PDF ডাউনলোড ↗</a></div>
   </div>
 </section>
 

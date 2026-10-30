@@ -1,0 +1,6 @@
+ARIANBOARD Ultimate v4
+- Rebuilt the book from scratch: 24 distinct chapters, practical examples, exercises and action plans.
+- Added eight browser-based student tools.
+- Added searchable practical resource library.
+- Preserved the result portal, university directory and existing project identity.
+- Kept official-result integration limitations explicit.

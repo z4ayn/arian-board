@@ -1,0 +1,18 @@
+ARIANBOARD ULTIMATE v4 — START HERE
+
+1) Upload the CONTENTS of this ZIP to the ROOT of your existing GitHub repository:
+   https://github.com/z4ayn/arian-board
+
+2) Keep these files together in the repository root:
+   index.html
+   styles.css
+   app.js
+   .nojekyll
+   ARIAN-Book-Cover.png
+   ARIAN-Dream-Plan-Achieve-Book-v2.pdf
+
+3) Commit the changes. GitHub Pages will publish the updated site.
+
+4) The old ZIP and old PDF are not changed. This package contains the NEW book only.
+
+Important: the result form still hands users to the official results portal. Live official result data requires an authorized data source/backend. Do not describe this static version as a live government results API.
